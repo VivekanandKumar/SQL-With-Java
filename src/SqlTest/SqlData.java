@@ -9,15 +9,18 @@ public class SqlData {
     Statement st;
     ResultSet rs;
     PreparedStatement ps;
+
     {
-        try{
+        try {
             assert conn != null;
             st = conn.createStatement();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    void display() throws Exception{
+
+    //Function to display data from a sql database table;
+    void display() throws SQLException {
         String query = "Select * from test";
         rs = st.executeQuery(query);
         while (rs.next()) {
@@ -26,28 +29,29 @@ public class SqlData {
         }
         rs.close();
     }
-
-    void insert(String name,int rollNo) throws SQLException {
+//  Function to insert data into a sql database table;
+    void insert(String name, int rollNo) throws SQLException {
         String query = "insert into test (Name,Roll_No) values(?,?)";
         ps = conn.prepareStatement(query);
-        ps.setString(1,name);
-        ps.setInt(2,rollNo);
+        ps.setString(1, name);
+        ps.setInt(2, rollNo);
         ps.execute();
 
         ps.close();
     }
+//  Function to delete data from a sql database table;
     void delete(int rollNo) throws SQLException {
         String query = "delete from test where Roll_No = ?";
         ps = conn.prepareStatement(query);
-        ps.setInt(1,rollNo);
+        ps.setInt(1, rollNo);
         System.out.println(ps.executeUpdate());
         ps.close();
     }
 
     public static void main(String[] args) throws Exception {
         SqlData dd = new SqlData();
-        dd.insert("Sangita Devi",101);
+//        dd.insert("Sangita Devi", 101);
         dd.display();
-        dd.delete(101);
+//        dd.delete(101);
     }
 }
