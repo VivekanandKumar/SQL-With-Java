@@ -4,7 +4,7 @@ import java.sql.*;
 
 
 public class SqlData {
-
+//  calling connectDb() method from MyConnection class.
     Connection conn = MyConnection.connectDb();
     Statement st;
     ResultSet rs;
@@ -24,14 +24,14 @@ public class SqlData {
         String query = "Select * from test";
         rs = st.executeQuery(query);
         while (rs.next()) {
-            System.out.printf("%-10d%-30s%d", rs.getInt(3), rs.getString(1), rs.getInt(2));
+            System.out.printf("%-10d%-30s%d", rs.getInt(1), rs.getString(2), rs.getInt(3));
             System.out.println();
         }
         rs.close();
     }
 //  Function to insert data into a sql database table;
     void insert(String name, int rollNo) throws SQLException {
-        String query = "insert into test (Name,Roll_No) values(?,?)";
+        String query = "insert into test (FullName,RollNo) values(?,?)";
         ps = conn.prepareStatement(query);
         ps.setString(1, name);
         ps.setInt(2, rollNo);
@@ -41,7 +41,7 @@ public class SqlData {
     }
 //  Function to delete data from a sql database table;
     void delete(int rollNo) throws SQLException {
-        String query = "delete from test where Roll_No = ?";
+        String query = "delete from test where RollNo = ?";
         ps = conn.prepareStatement(query);
         ps.setInt(1, rollNo);
         System.out.println(ps.executeUpdate());
@@ -50,8 +50,8 @@ public class SqlData {
 
     public static void main(String[] args) throws Exception {
         SqlData dd = new SqlData();
-//        dd.insert("Sangita Devi", 101);
-        dd.display();
-//        dd.delete(101);
+//        dd.insert("Pooja Kumari", 56);
+//        dd.display();
+//        dd.delete(56);
     }
 }
