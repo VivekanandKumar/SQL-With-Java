@@ -50,7 +50,7 @@ public class SqlData {
 
     public static void main(String[] args) throws Exception {
         SqlData dd = new SqlData();
-//        dd.insert("Pooja Kumari", 56);
+//        dd.insert("xyz", 56);
 //        dd.display();
 //        dd.delete(56);
     }
