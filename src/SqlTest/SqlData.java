@@ -51,7 +51,7 @@ public class SqlData {
     public static void main(String[] args) throws Exception {
         SqlData dd = new SqlData();
 //        dd.insert("xyz", 56);
-//        dd.display();
+        dd.display();
 //        dd.delete(56);
     }
 }
